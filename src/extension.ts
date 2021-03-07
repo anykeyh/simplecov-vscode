@@ -55,8 +55,8 @@ export async function activate(context: vscode.ExtensionContext) {
 			};
 
 			if(existsSync(absoluteFilePath)) {
+				vscode.window.onDidChangeActiveTextEditor(updateView);
 				vscode.window.onDidChangeTextEditorSelection(updateView);
-				console.log("UPDATE VIEW?")
 				updateView();
 			} else {
 				vscode.window.showErrorMessage(`simplecov-vscode: resulset json file not found: ${config.path}`);
