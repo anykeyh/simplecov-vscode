@@ -1,10 +1,16 @@
-import { readFileSync } from "fs";
+import { readFileSync, statSync } from "fs";
 import { ISimplecovResultset } from "./ISimplecovResultset";
 
+var cachedResult : ISimplecovResultset;
+var cacheTime : number = 0;
+
 export async function readResultSet(filename : string) {
-  return JSON.parse(readFileSync(filename, 'utf8')) as ISimplecovResultset;
-}
+  let stats = statSync(filename);
 
-export function load() {
+  if(!cachedResult || stats.mtimeMs !== cacheTime) {
+    cachedResult = JSON.parse(readFileSync(filename, 'utf8')) as ISimplecovResultset;
+    cacheTime = stats.mtimeMs;
+  }
 
+  return cachedResult;
 }
