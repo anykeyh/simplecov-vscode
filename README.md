@@ -14,3 +14,24 @@ This extension contributes the following settings:
 
 * `simplecov-vscode.path`: Path to your `.resultset.json` file relative to the workspace. By default `coverage/.resultset.json`
 * add the redefinable colors `coverage.notCovered`, `coverage.covered`, `coverage.ignored` to the theme.
+
+## Requirements
+
+This extension expects the coverage to be ran under the `RSpec` label.
+
+If not using Rspec, setup can be done as such (quick and dirty)
+
+```ruby
+# test_helper.rb
+SimpleCov.command_name 'MY:PROJECT'
+```
+
+```bash
+# Run this after the coverage report
+cd coverage
+sed -i 's/MY:PROJECT/RSpec/' .resultset.json
+
+# Eventually rewrite the local paths if developping inside a container
+cd coverage
+sed -i 's:/docker/path/app/:/home/user/project/app/:g' .resultset.json
+```
