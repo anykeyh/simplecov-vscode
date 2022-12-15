@@ -1,43 +1,43 @@
 {
   "name": "simplecov-vscode",
-	"displayName": "simplecov-vscode",
-	"publisher": "anykeyh",
-	"description": "Show current code coverage directly into your IDE",
-	"repository": "https://github.com/anykeyh/simplecov-vscode",
-	"version": "0.0.2",
-	"engines": {
-		"vscode": "^1.53.0"
-	},
-	"categories": [
-		"Other"
-	],
-	"activationEvents": [
+  "displayName": "simplecov-vscode",
+  "publisher": "anykeyh",
+  "description": "Show current code coverage directly into your IDE",
+  "repository": "https://github.com/anykeyh/simplecov-vscode",
+  "version": "0.0.2",
+  "engines": {
+    "vscode": "^1.53.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
     "onLanguage:ruby"
-	],
-	"main": "./out/extension.js",
-	"contributes": {
-		"commands": [
-			{
-				"command": "simplecov-vscode.toggle",
-				"title": "Toggle Simplecov coverage visualization"
-			}
-		],
-		"configuration": {
-			"title": "Simplecov VSCode",
-			"properties": {
-				"simplecov-vscode.path": {
-					"type": "string",
-					"default": "./coverage/.resultset.json",
-					"description": "Path to your .resultset.json file relative to the workspace"
-				},
-				"simplecov-vscode.enabled": {
-					"type": "boolean",
-					"default": true,
-					"description": "Whether this plugin is enabled or not."
-				}
-			}
-		},
-		"colors": [
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "simplecov-vscode.toggle",
+        "title": "Toggle Simplecov coverage visualization"
+      }
+    ],
+    "configuration": {
+      "title": "Simplecov VSCode",
+      "properties": {
+        "simplecov-vscode.path": {
+          "type": "string",
+          "default": "./coverage/.resultset.json",
+          "description": "Path to your .resultset.json file relative to the workspace"
+        },
+        "simplecov-vscode.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Whether this plugin is enabled or not."
+        }
+      }
+    },
+    "colors": [
       {
         "id": "coverage.notCovered",
         "description": "Background of the line when the line is not covered by simplecov.",
@@ -47,7 +47,7 @@
           "highContrast": "#FF3D0033"
         }
       },
-			{
+      {
         "id": "coverage.covered",
         "description": "Background of the line when the line is covered by simplecov.",
         "defaults": {
@@ -55,8 +55,8 @@
           "light": "#C2FF0033",
           "highContrast": "#C2FF0033"
         }
-			},
-			{
+      },
+      {
         "id": "coverage.ignored",
         "description": "Background of the line when the line is ignored.",
         "defaults": {
@@ -64,8 +64,8 @@
           "light": "#FFBD0033",
           "highContrast": "#FFBD0033"
         }
-			},
-			{
+      },
+      {
         "id": "coverage.irrelevant",
         "description": "Background of the line when the line is irrelevant (not visible by default).",
         "defaults": {
@@ -73,28 +73,28 @@
           "light": "#00000000",
           "highContrast": "#00000000"
         }
-			}
+      }
     ]
-	},
-	"scripts": {
-		"vscode:prepublish": "yarn run compile",
-		"compile": "tsc -p ./",
-		"watch": "tsc -watch -p ./",
-		"pretest": "yarn run compile && yarn run lint",
-		"lint": "eslint src --ext ts",
-		"test": "node ./out/test/runTest.js"
-	},
-	"devDependencies": {
-		"@types/vscode": "^1.53.0",
-		"@types/glob": "^7.1.3",
-		"@types/mocha": "^8.0.4",
-		"@types/node": "^12.11.7",
-		"eslint": "^7.19.0",
-		"@typescript-eslint/eslint-plugin": "^4.14.1",
-		"@typescript-eslint/parser": "^4.14.1",
-		"glob": "^7.1.6",
-		"mocha": "^8.2.1",
-		"typescript": "^4.1.3",
-		"vscode-test": "^1.5.0"
-	}
+  },
+  "scripts": {
+    "vscode:prepublish": "yarn run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "yarn run compile && yarn run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/glob": "^7.1.3",
+    "@types/mocha": "^8.0.4",
+    "@types/node": "^12.11.7",
+    "@types/vscode": "^1.53.0",
+    "@typescript-eslint/eslint-plugin": "^4.14.1",
+    "@typescript-eslint/parser": "^4.14.1",
+    "eslint": "^7.19.0",
+    "glob": "^7.1.6",
+    "mocha": "^10.2.0",
+    "typescript": "^4.1.3",
+    "vscode-test": "^1.5.0"
+  }
 }

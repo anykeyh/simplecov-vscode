@@ -5,6 +5,7 @@ import * as path from 'path';
 import * as vscode from 'vscode';
 import { readResultSet } from './Cache';
 import { ISimplecovResultset } from './ISimplecovResultset';
+import { getCoverage }  from "./coverage_finder";
 
 const DECORATIONS = {
 	notCovered: vscode.window.createTextEditorDecorationType({
@@ -63,9 +64,9 @@ export async function activate(context: vscode.ExtensionContext) {
 			}
 		}
 
-		function decorateFilesWithCoverage(editors : vscode.TextEditor[], resulset : ISimplecovResultset) {
+		function decorateFilesWithCoverage(editors : readonly vscode.TextEditor[], resulset : ISimplecovResultset) {
 			editors.forEach(editor => {
-				decorateFileWithCoverage(editor, resulset)
+				decorateFileWithCoverage(editor, resulset);
 			});
 		}
 
@@ -74,7 +75,7 @@ export async function activate(context: vscode.ExtensionContext) {
 
 			let filename = editor.document.fileName;
 
-			let coverage = resultSet.RSpec.coverage;
+			let coverage = getCoverage(resultSet);
 
 			let map;
 
